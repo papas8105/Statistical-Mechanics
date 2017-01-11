@@ -1,0 +1,71 @@
+\documentclass[12pt]{report}
+%\author{George}
+\usepackage{geometry}
+\geometry{a4paper,total={210mm,297mm},
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm,
+ }
+\usepackage{fouriernc}
+\pagenumbering{roman}
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+%\usepackage{xgreek}
+\defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle ,Scale=MatchLowercase} 
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\setsansfont{Gentium}
+\usepackage{parskip}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{pstricks-add}
+\definecolor{light-gray}{gray}{0.95}
+\usepackage{listings}
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    escapechar=¢,
+    language=python,
+    frame=single,
+    frameround=tttt,
+    showstringspaces=false,
+    backgroundcolor=\color{light-gray}
+}
+\newcommand*{\ipythonprompt}[1]{\makebox[0pt][r]{\textbf{In [#1]:}\hspace{1em}}}
+\usepackage{graphics}
+\newcommand{\ttt}{\texttt}
+\begin{document}
+\begin{center}
+ \Large Spotting The Correct Algorithm
+\end{center}
+
+Consider a one dimensional system of N sites with periodic boundary conditions, with a single particle hopping 
+between neighboring sites at time $t = 0,1,2,\ldots$ as shown in the next figure. A move from site $i$ to site $i+1$ 
+modulo N is "to the right" and a move from site $i$ to site $i-1$ is "to the left". 
+\[
+\psset{xunit=0.75cm,yunit=0.75cm,algebraic=true,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-3.82,-2.88)(3.35,3.12)
+\pscircle[linewidth=2pt](-0.24,0.04){2.05}
+\rput[tl](2.54,1.72){$$ i $$}
+\rput[tl](1.03,3.0){$$ i - 1 $$}
+\rput[tl](2.35,-1){$$ i + 1$$}
+\begin{scriptsize}
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](0.78,2.58)
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](-1.31,2.56)
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](-2.78,1.07)
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](-2.76,-1.03)
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](-1.26,-2.49)
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](0.83,-2.48)
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](2.3,-0.98)
+\psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](2.28,1.11)
+\end{scriptsize}
+\end{pspicture*}
+\]
+The two following programs implement the \textbf{Markov-chain Monte Carlo} algorithm such at that each 
+time step, the particle moves with probability 1/2 to the right and with probability 1/2 to the left. 
+We also have to note that the algorithm (in both programs) satisfies detailed balance with a constant 
+probability on all sites and that it is irreducible thus it cannot be broken up into two independent 
+processes.
+\lstinputlisting[language = Python]{1.py}
+\lstinputlisting[language = Python]{2.py}
+\end{document}
