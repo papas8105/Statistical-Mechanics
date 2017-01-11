@@ -39,15 +39,16 @@
  \Large Spotting The Correct Algorithm
 \end{center}
 
-\textbf{1.} Consider a one dimensional system of N sites with periodic boundary conditions, with a single particle hopping between 
-neighboring sites at time $t = 0,1,2,\ldots$ as shown in the next figure. A move from site $i$ to site $i+1$ modulo N is 
-"to the right" and a move from site $i$ to site $i-1$ is "to the left". 
+\textbf{1.} Consider a one dimensional system of N sites with periodic boundary conditions, with a single particle hopping 
+between neighboring sites at time $t = 0,1,2,\ldots$ as shown in the next figure. A move from site $i$ to site $i+1$ 
+modulo N is "to the right" and a move from site $i$ to site $i-1$ is "to the left". 
 \[
 \psset{xunit=0.75cm,yunit=0.75cm,algebraic=true,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
 \begin{pspicture*}(-3.82,-2.88)(3.35,3.12)
 \pscircle[linewidth=2pt](-0.24,0.04){2.05}
 \rput[tl](2.54,1.72){$$ i $$}
-\rput[tl](1.03,3.0){$$ i + 1 $$}
+\rput[tl](1.03,3.0){$$ i - 1 $$}
+\rput[tl](2.35,-1){$$ i + 1$$}
 \begin{scriptsize}
 \psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](0.78,2.58)
 \psdots[dotsize=5pt 0,dotstyle=*,linecolor=red](-1.31,2.56)
